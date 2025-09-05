@@ -40,9 +40,9 @@ npm install
 # Start development server
 npm run dev   # or npm start (if using CRA)
 Then open your browser at http://localhost:5173 (or the port shown in your terminal).
-
+```
 📂 Project Structure
-bash
+```bash
 Copy code
 The-Ashvathha/
 ├── public/           # Static assets
@@ -52,20 +52,10 @@ The-Ashvathha/
 │   ├── App.jsx       # Root component
 │   └── main.jsx      # Entry point
 └── package.json
-🎯 Roadmap
- Add more pages inspired by the novel
-
- Experiment with animations (Framer Motion / GSAP)
-
- Polish the UI with Tailwind or styled-components
-
- Add dark mode support
-
- Deploy on Vercel / Netlify
+```
 
 🤝 Contributing
 This is a personal learning project, but ideas and suggestions are always welcome!
-Feel free to open issues or submit pull requests.
 
 📜 License
 This project is licensed under the MIT License – feel free to use, modify, and share.
