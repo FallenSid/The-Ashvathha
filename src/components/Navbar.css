@@ -15,7 +15,7 @@ ul li{
     color: white;
     font-size: 20px;
 }
-ul li:hover{
+nav ul li:hover{
     cursor: pointer;
     color: rgb(0, 0, 0);
 }

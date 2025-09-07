@@ -29,9 +29,23 @@ function App() {
             ancient glyph-forged Paths that challenge not just the body, but the
             soul itself.
           </p>
+          <ul>
+            <li>Secrets buried in Blood...</li>
+            <li>Bonds tested by fire...</li>
+            <li>Illusions more real than memory...</li>
+          </ul>
+          <p>
+            This is not a tale of good versus evil. It is the slow unraveling of
+            identity in a world where hope is weaponized, and power comes at the
+            cost of self.
+          </p>
+          <p>
+            And ask yourself — when the world offers you a heaven...{" "}
+            <strong>will you take it? Or will you burn it?</strong>
+          </p>
         </div>
         <div className="img-display">
-          <img src="Ashvathha\src\assets\image\bg1.png" alt="Nothing " />
+          <img src="src\assets\image\bg1.png" alt="Nothing " />
         </div>
       </div>
     </>
