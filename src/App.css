@@ -1,0 +1,30 @@
+
+.container{
+    display:flex;
+    /* border: 2px solid white; */
+    position: absolute;
+    left :25px;
+    top:55px;
+}
+.container , h1{
+    color:white;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.container h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.Intro-area{
+    width:65vw;
+}
+
+.red-font{
+    color: red;
+}
+
+.img-display{
+    
+}

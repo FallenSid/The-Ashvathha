@@ -1,11 +1,13 @@
 nav {
-    background-color: rgba(0, 0, 0, 0.608);
+    background-image: radial-gradient(circle, #e40000 0%, #a40909 50%);
+    position: fixed;
+    top: 0px;
+    left: 0px;
 }
 nav ul{
     display: flex;
-    width: 80vw;
+    width: 100vw;
     justify-content: center;
-    padding: 13px;
 }
 ul li{
     list-style: none;
@@ -15,7 +17,7 @@ ul li{
 }
 ul li:hover{
     cursor: pointer;
-    color: red;
+    color: rgb(0, 0, 0);
 }
 ul li a{
     color: white;
