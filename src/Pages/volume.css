@@ -1,0 +1,39 @@
+.container{
+    /* margin-top: 10vh; */
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    left: 0px;
+
+    position: fixed;
+}
+.article{
+    background-color: rgb(41, 41, 41);
+    height: 100vh;
+    width: 20%;
+}
+.main{
+    width: 60%;
+    height: 100vh;
+    border-left: 2px solid white;
+}
+
+.main ul li a {
+    text-decoration: underline;
+    color: red;
+}
+.main ul li{
+    margin: 20px;
+}
+
+.footer{
+    position: fixed;
+    bottom: 100px;
+    width: 60%;
+}
+
+.section{
+    width: 20%;
+    height: 100vh;
+    background-color: rgb(41, 41, 41);
+}
