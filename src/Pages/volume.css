@@ -4,36 +4,46 @@
     flex-direction: row;
     width: 100%;
     left: 0px;
-
+    /* position: fixed; */
+}
+.container #volbg{
     position: fixed;
+    height: calc(100vh - 59px);
+    width: 100vw;
+    object-fit: cover;
+    opacity: 0.6;
+    z-index: -200;
 }
 .article{
-    background-color: rgb(41, 41, 41);
-    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 93vh;
     width: 20%;
 }
 .main{
     width: 60%;
-    height: 100vh;
+    height: 93vh;
     border-left: 2px solid white;
 }
-
 .main ul li a {
     text-decoration: underline;
-    color: red;
+    color: white;
+    /* color: #ff1d1d; */
+    text-shadow: 0 0 10px black;
+}
+
+.main ul li a:hover {
+    text-shadow: 1px 1px 30px navy;
 }
 .main ul li{
     margin: 20px;
 }
 
-.footer{
-    position: fixed;
-    bottom: 100px;
-    width: 60%;
+.main h1{
+    color: Red;
 }
 
 .section{
     width: 20%;
-    height: 100vh;
-    background-color: rgb(41, 41, 41);
+    height: 93vh;
+    background-color: rgba(0, 0, 0, 0.6);
 }
