@@ -1,4 +1,4 @@
-# 🌳 The-Ashvathha
+# The-Ashvathha
 
 A multi-page **React** application inspired by the novel *The Ashvathha*.  
 This project is built for fun, exploration, and to learn new things in modern frontend development.
@@ -8,18 +8,18 @@ This project is built for fun, exploration, and to learn new things in modern fr
 ## ✨ Features
 
 - 📖 Multi-page React app structure  
-- 🎨 Clean and modern UI design  
+- 🎨 creepy and dark theme UI design  
 - ⚡ Experimenting with React concepts and frontend best practices  
-- 🌱 A creative coding project combining **literature + web development**  
+- 🌱 A creative coding project combining **Novel + web development**  
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **React** (Vite or CRA — depending on setup)  
+- **React + Vite** 
 - **JavaScript / JSX**  
-- **CSS / Tailwind (if used)**  
-- **React Router** (for multiple pages)  
+- **CSS**  
+- **React Router Dom** (for multiple pages)  
 
 ---
 
@@ -32,10 +32,10 @@ Follow these steps to run the project locally:
 git clone https://github.com/your-username/The-Ashvathha.git
 
 # Navigate into the project
-cd The-Ashvathha
+cd Ashvathha
 
 # Install dependencies
-npm install
+npm install / npm i
 
 # Start development server
 npm run dev   # or npm start (if using CRA)
@@ -46,7 +46,8 @@ Then open your browser at http://localhost:5173 (or the port shown in your termi
 Copy code
 The-Ashvathha/
 ├── public/           # Static assets
-├── src/
+├── src
+|   ├── assets/       # containing background images and character imagess
 │   ├── pages/        # App pages
 │   ├── components/   # Reusable UI components
 │   ├── App.jsx       # Root component
