@@ -47,7 +47,7 @@ Copy code
 The-Ashvathha/
 ├── public/           # Static assets
 ├── src
-|   ├── assets/       # containing background images and character imagess
+│   ├── assets/       # containing background images and character imagess
 │   ├── pages/        # App pages
 │   ├── components/   # Reusable UI components
 │   ├── App.jsx       # Root component
