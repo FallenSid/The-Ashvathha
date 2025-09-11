@@ -1,0 +1,74 @@
+#feedback-bg{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    z-index: -20;
+    opacity: 0.5;
+}
+
+.main{
+    position: fixed;
+    display: flex;
+    border: none;
+    top: 50px;
+    gap: 30px;
+    height: 98vh;
+    width: 100vw;
+}
+
+.char-img{
+    width: 45%;
+    height: 100%;
+}
+
+.content{
+    width: 47%;
+    height: 90%;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-top: 25px;
+    box-shadow: 0 0 10px red;
+}
+
+.content h1{
+    text-align: center;
+    font-size: 30px;
+}
+
+.content form{
+    margin-left: 30px;
+    color: white;
+}
+
+.name-input label , .textarea{
+    font-size: 20px;
+    margin: 20px;
+}
+
+.textarea textarea{
+    display: block;
+    height: 150px;
+    width: 50%;
+    resize: none;
+}
+
+.content form>input{
+    margin: 10px;
+    width: 75px;
+    height: 30px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+.content form>input:hover{
+    background-color: rgb(214, 3, 3);
+}
+
+#monster-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
