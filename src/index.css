@@ -1,3 +1,6 @@
 body{
   background-color: black;
 }
+*{
+  scrollbar-width: none;
+}

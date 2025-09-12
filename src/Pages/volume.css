@@ -1,48 +1,46 @@
 .container{
-    /* margin-top: 10vh; */
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    left: 0px;
-    /* position: fixed; */
 }
-.container #volbg{
+#volbg{
     position: fixed;
-    height: calc(100vh - 59px);
+    height: 100vh;
     width: 100vw;
     object-fit: cover;
     opacity: 0.6;
-    z-index: -200;
+    left:0;
+    z-index: -20;
 }
 .article{
-    background-color: rgba(0, 0, 0, 0.6);
-    height: 93vh;
-    width: 20%;
+    width: 20vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
 }
-.main{
-    width: 60%;
-    height: 93vh;
-    border-left: 2px solid white;
+.vol-link{
+    width: 60vw;
+    height: 100vh;
+    position: fixed;
+    left: 20vw;
+    z-index: 2;
+    box-shadow: 0 0 20px white;
 }
-.main ul li a {
-    text-decoration: underline;
-    color: white;
-    text-shadow: 0 0 10px black;
-}
-
-.main ul li a:hover {
-    text-shadow: 1px 1px 30px navy;
-}
-.main ul li{
-    margin: 20px;
-}
-
-.main h1{
-    color: Red;
-}
-
 .section{
-    width: 20%;
-    height: 93vh;
-    background-color: rgba(0, 0, 0, 0.6);
+    width: 20vw;
+    height: 100vh;
+    position: fixed;
+    left:80vw;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.vol-link h1{
+    color: red;
+}
+
+.vol-link ul li a {
+    box-shadow: 0 0 20px black;
+}
+
+.vol-link ul li a:hover{
+    color: red;
 }

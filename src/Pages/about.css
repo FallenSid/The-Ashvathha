@@ -1,0 +1,39 @@
+#about-bg{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: -20;
+}
+
+.container{
+    position: relative;
+    left: 0;
+}
+
+.img-area h1{
+    text-decoration: none;
+}
+.img-area{
+    position: relative;
+    left: 0px;
+    top:0px
+}
+
+
+#writter-img{
+    height: 80vh;
+    left: 20px;
+    margin: 20px;
+    margin-bottom: 0px;
+}
+
+.writter-desc{
+    box-shadow: 0 0 10px white;
+    padding:20px;
+}
+
+.writter-desc h2{
+    color: red;
+}
