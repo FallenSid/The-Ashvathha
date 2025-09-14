@@ -4,7 +4,7 @@ const Volume = () => {
   return (
     <>
       <Navbar />
-      <img id="volbg" src="src/assets/image/volbg.jpg" alt="" />
+      <img id="volbg" src="src/assets/image/volbg.jpg" alt="VolumePage-Background" />
       <div className="container">
 
         <div className="article">

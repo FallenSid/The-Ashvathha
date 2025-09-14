@@ -1,16 +1,46 @@
 import Navbar from "../components/Navbar";
-import './about.css'
+import "./about.css";
+import { useRef, useState } from "react";
 const About = () => {
+  const audioRef = useRef(null);
+  const [IsPlaying, setIsPlaying] = useState(false);
+  const [buttonText, setbuttonText] = useState("music_note")
+
+  function audioPlayer() {
+    if (IsPlaying) {
+      audioRef.current.pause();
+      setbuttonText('music_note')
+    } else {
+      audioRef.current.play();
+      setbuttonText('music_off')
+    }
+    setIsPlaying(!IsPlaying);
+  }
   return (
     <>
       <Navbar />
       <div className="container">
-        <img src="src/assets/image/aboutwritterpage.jpg" alt="" id="about-bg" />
+        <img
+          src="src/assets/image/aboutwritterpage.jpg"
+          alt="AboutPage-Background"
+          id="about-bg"
+        />
         <div className="img-area">
           <img id="writter-img" src="src/assets/image/raizen.jpg" alt="" />
           <h1>Raizen: Owner of Empty Thrown</h1>
         </div>
         <div className="writter-desc">
+          <button
+            style={{backgroundColor:IsPlaying ? "rgba(0, 217, 255, 1)":"rgba(66, 66, 66, 1)"
+            }}
+            className="material-symbols-outlined"
+            id="audio-btn"
+            onClick={() => {
+              audioPlayer();
+            }}
+          >
+            {buttonText}
+          </button>
           <h2>The Writter Of Ashvathha:The One Who Planned Everything</h2>
 
           <p>About the Author: Raizen</p>
@@ -46,6 +76,10 @@ const About = () => {
           <p>And in every word he leaves behind, the crown sharpens.</p>
         </div>
       </div>
+      <audio
+        ref={audioRef}
+        src="src/assets/audio/Mysterious World Hindi background Music.mp3"
+      ></audio>
     </>
   );
 };

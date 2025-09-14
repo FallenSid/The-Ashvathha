@@ -37,3 +37,15 @@
 .writter-desc h2{
     color: red;
 }
+
+#audio-btn{
+    cursor: pointer;
+    position: fixed;
+    width: 35px;
+    height: 35px;
+    background-color: #0a0603;
+    border:2px solid rgb(61, 61, 61);
+    border-radius: 40px;
+    color: white;
+    right: 2vw;
+}

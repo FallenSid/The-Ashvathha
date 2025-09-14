@@ -1,5 +1,6 @@
 .container{
     display: flex;
+    top: 45px;
 }
 #volbg{
     position: fixed;
@@ -16,6 +17,8 @@
     position: fixed;
     left: 0;
     background-color: rgba(0, 0, 0, 0.8);
+    margin: auto;
+    text-align: center;
 }
 .vol-link{
     width: 60vw;
@@ -31,6 +34,8 @@
     position: fixed;
     left:80vw;
     background-color: rgba(0, 0, 0, 0.8);
+    margin: auto;
+    text-align: center;
 }
 
 .vol-link h1{
