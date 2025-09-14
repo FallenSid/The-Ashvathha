@@ -46,8 +46,8 @@ Then open your browser at http://localhost:5173 (or the port shown in your termi
 Copy code
 The-Ashvathha/
 ├── public/           # Static assets
+│   └──  assets/       # containing background images and character imagess
 ├── src
-│   ├── assets/       # containing background images and character imagess
 │   ├── pages/        # App pages
 │   ├── components/   # Reusable UI components
 │   ├── App.jsx       # Root component
