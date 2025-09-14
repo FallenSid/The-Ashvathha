@@ -59,7 +59,7 @@ The-Ashvathha/
 This is a personal learning project, but ideas and suggestions are always welcome!
 
 📜 License
-This project is licensed under the MIT License – feel free to use, modify, and share.
+By fun and Code ~ FallenSid
 
 🌿 Inspiration
 This project is inspired by the novel The Ashvathha — built as a creative way to blend storytelling with frontend development.
