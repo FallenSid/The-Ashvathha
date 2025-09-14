@@ -8,7 +8,7 @@ const Feedback = () => {
 
        <img
         src="src\assets\image\download (31).jpeg.jpg"
-        alt="Feedback-background"
+        alt="FeedbackPage-background"
         id="feedback-bg"
        />
      <div className="main">
