@@ -4,7 +4,7 @@ const Volume = () => {
   return (
     <>
       <Navbar />
-      <img id="volbg" src="src/assets/image/volbg.jpg" alt="VolumePage-Background" />
+      <img id="volbg" src="public/assets/image/volbg.jpg" alt="VolumePage-Background" />
       <div className="container">
 
         <div className="article">
@@ -17,9 +17,7 @@ const Volume = () => {
           <h1>Volume</h1>
           <hr />  
           <ul>
-            <li><a href="#">Volume 1</a></li>
-            <li><a href="#">Volume 2</a></li>
-            <li><a href="#">Volume 3</a></li>
+            <li><a href="https://www.webnovel.com/book/33143725600755305" target="_placeholder">Volume 1</a></li>
           </ul>
         </div>
 
