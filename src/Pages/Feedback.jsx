@@ -7,7 +7,7 @@ const Feedback = () => {
       <Navbar />
 
        <img
-        src="public\assets\image\download (31).jpeg.jpg"
+        src="/assets/image/download (31).jpeg.jpg"
         alt="FeedbackPage-background"
         id="feedback-bg"
        />
@@ -16,7 +16,7 @@ const Feedback = () => {
 
       <div className="char-img">
         <img
-          src="public\assets\image\char\this guy-Photoroom.png"
+          src="/assets/image/char/this guy-Photoroom.png"
           alt="Monster-image"
           id="monster-img"
           />
