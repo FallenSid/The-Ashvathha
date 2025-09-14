@@ -44,7 +44,7 @@ function App() {
           </p>
         </div>
         <div className="img-display">
-          <img src="public\assets\image\bg1.png" alt="HomePage-Background " />
+          <img src="/assets/image/bg1.png" alt="HomePage-Background " />
         </div>
       </div>
     </>

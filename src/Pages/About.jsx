@@ -21,12 +21,12 @@ const About = () => {
       <Navbar />
       <div className="container">
         <img
-          src="public/assets/image/aboutwritterpage.jpg"
+          src="/assets/image/aboutwritterpage.jpg"
           alt="AboutPage-Background"
           id="about-bg"
         />
         <div className="img-area">
-          <img id="writter-img" src="public/assets/image/raizen.jpg" alt="" />
+          <img id="writter-img" src="/assets/image/raizen.jpg" alt="" />
           <h1>Raizen: Owner of Empty Thrown</h1>
         </div>
         <div className="writter-desc">
@@ -78,7 +78,7 @@ const About = () => {
       </div>
       <audio
         ref={audioRef}
-        src="public/assets/audio/Mysterious World Hindi background Music.mp3"
+        src="/assets/audio/Mysterious World Hindi background Music.mp3"
       ></audio>
     </>
   );
