@@ -17,7 +17,7 @@ const Volume = () => {
           <h1>Volume</h1>
           <hr />  
           <ul>
-            <li><a href="#">Volume 1</a></li>
+            <li><a href="https://www.webnovel.com/book/33143725600755305" target="_placeholder">Volume 1</a></li>
           </ul>
         </div>
 

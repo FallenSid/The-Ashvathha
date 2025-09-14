@@ -78,7 +78,7 @@ const About = () => {
       </div>
       <audio
         ref={audioRef}
-        src="src/assets/audio/Mysterious World Hindi background Music.mp3"
+        src="public/assets/audio/Mysterious World Hindi background Music.mp3"
       ></audio>
     </>
   );

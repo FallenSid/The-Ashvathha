@@ -43,7 +43,7 @@
 }
 
 .vol-link ul li a {
-    box-shadow: 0 0 20px black;
+    text-shadow: 0 0 20px black;
 }
 
 .vol-link ul li a:hover{
