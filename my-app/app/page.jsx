@@ -1,28 +1,520 @@
-import Navbar from '@/component/Navbar'
-import React from 'react'
-import { Cinzel, Cinzel_Decorative } from 'next/font/google'
 
-const cinzel = Cinzel({
-  subsets: ["latin"],
-});
-const page = () => {
+
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+ import React from "react";
+
+/* ─────────────────────────── Data ─────────────────────────── */
+
+const CHARACTERS = [
+  { name: "Rachit", title: "The Strategist", img: "/images/char-rachit.jpg" },
+  { name: "Gaurav", title: "The Brawler", img: "/images/char-gaurav.jpg" },
+  { name: "Swayam", title: "The Silent Anchor", img: "/images/char-swayam.jpg" },
+  { name: "Aviral", title: "The Observer", img: "/images/char-aviral.jpg" },
+  { name: "Anshika", title: "The Wildfire", img: "/images/char-anshika.jpg" },
+];
+
+const CHAPTERS = [
+  {
+    num: "I",
+    label: "The Chronicle",
+    title: "The Beginning",
+    desc: "The journey begins with three shadows.",
+    img: "/images/chapter1.jpg",
+    locked: false,
+  },
+  {
+    num: "II",
+    label: "The Chronicle",
+    title: "Ashvathha",
+    desc: "Where survival is merely admission.",
+    img: null,
+    locked: true,
+  },
+  {
+    num: "III",
+    label: "The Chronicle",
+    title: "The Arenas",
+    desc: "Blood for spectacle. Glory for demons.",
+    img: null,
+    locked: true,
+  },
+  {
+    num: "IV",
+    label: "The Chronicle",
+    title: "Gandamadana",
+    desc: "The mountain remembers.",
+    img: null,
+    locked: true,
+  },
+  {
+    num: "V",
+    label: "The Chronicle",
+    title: "The War",
+    desc: "Fate is not given. It is rewritten.",
+    img: null,
+    locked: true,
+  },
+];
+
+
+const NAV_LINKS = [
+  { label: "The World", href: "#world" },
+  { label: "The Survivors", href: "#survivors" },
+  { label: "The Chronicle", href: "#chronicle" },
+  { label: "The Archives", href: "#archives" },
+  { label: "Beyond", href: "#beyond" },
+];
+
+/* ─────────────────────────── SVG Icons ─────────────────────────── */
+
+export function TreeSymbol({ className = "" }) {
   return (
-    <div className={'grow  flex justify-center h-full w-full'}>
-      <Navbar />
-      <div className=" grow">
-        <img className='w-full h-full object-cover -z-1 absolute top-0 opacity-80' src="./img/top-foreground.jpg" alt="top foreground" />
+    <svg
+      viewBox="0 0 60 80"
+      fill="none"
+      className={className}
+      stroke="currentColor"
+      strokeWidth="1.5"
+    >
+      <line x1="30" y1="80" x2="30" y2="10" />
+      <line x1="30" y1="20" x2="10" y2="5" />
+      <line x1="30" y1="20" x2="50" y2="5" />
+      <line x1="30" y1="35" x2="15" y2="22" />
+      <line x1="30" y1="35" x2="45" y2="22" />
+      <line x1="30" y1="50" x2="18" y2="40" />
+      <line x1="30" y1="50" x2="42" y2="40" />
+    </svg>
+  );
+}
 
-        <div className=" flex  items-center w-full h-full flex-col">
-          <div className="flex justify-center items-center flex-col relative top-45">
-            <h1 className={`text-8xl font-bold ${cinzel.className} text-transparent bg-clip-text bg-linear-180 from-white to-transparent z-1  tracking-widest`}>ASHVATHHA</h1>
+function CompassIcon({ className = "" }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} stroke="currentColor" strokeWidth="1.2">
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="2" />
+      <line x1="12" y1="2" x2="12" y2="6" />
+      <line x1="12" y1="18" x2="12" y2="22" />
+      <line x1="2" y1="12" x2="6" y2="12" />
+      <line x1="18" y1="12" x2="22" y2="12" />
+    </svg>
+  );
+}
+
+function DiamondOrnament() {
+  return (
+    <div className="flex items-center gap-2 my-4">
+      <div className="h-px flex-1 bg-linear-to-r from-transparent to-[#c0392b] opacity-40" />
+      <div
+        className="w-2 h-2 rotate-45 border border-[#c0392b] opacity-60"
+        style={{ flexShrink: 0 }}
+      />
+      <div className="h-px flex-1 bg-linear-to-l from-transparent to-[#c0392b] opacity-40" />
+    </div>
+  );
+}
+
+function LockIcon({ className = "" }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} stroke="currentColor" strokeWidth="1.5">
+      <rect x="5" y="11" width="14" height="10" rx="2" />
+      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+    </svg>
+  );
+}
+
+/* ─────────────────────────── Hook: Reveal on Scroll ─────────────────────────── */
+
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+}
+
+/* ─────────────────────────── Navbar ─────────────────────────── */
 
 
-            <h2 className={`${cinzel.className} font-thin text-4xl text-red-600 tracking-widest text-shadow-md text-shadow-red-900  opacity-90`}>The world forgot its gods.</h2>
-            <h2 className={`${cinzel.className} font-thin text-4xl text-red-600 tracking-widest  text-shadow-md  text-shadow-red-900 opacity-90`}>The sea remembers.</h2>
-          </div>
+function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-black/90 backdrop-blur-sm border-b border-[#c0392b]/20"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center gap-3">
+          <TreeSymbol className="w-5 h-6 text-[#c0392b]" />
+          <span className="font-cinzel text-sm tracking-[0.25em] text-[#d4c5a0] uppercase">
+            Ashvathha
+          </span>
+        </div>
+
+        {/* Desktop Nav */}
+        <ul className="hidden lg:flex items-center gap-8">
+          {NAV_LINKS.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                className="font-cinzel text-xs tracking-[0.2em] text-stone-400 hover:text-[#c0392b] transition-colors duration-300 uppercase"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* CTA */}
+        <div className="hidden lg:flex items-center gap-4">
+          <a
+            href="#chronicle"
+            className="font-cinzel text-xs tracking-[0.2em] uppercase border border-[#c0392b]/60 text-[#d4c5a0] px-5 py-2 hover:bg-[#c0392b] hover:text-white transition-all duration-300"
+          >
+            Begin the Journey
+          </a>
+        </div>
+
+        {/* Mobile hamburger */}
+        <button
+          className="lg:hidden flex flex-col gap-1.5 p-2"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label="Toggle menu"
+        >
+          <span className={`block w-6 h-px bg-[#d4c5a0] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`block w-6 h-px bg-[#d4c5a0] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-px bg-[#d4c5a0] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="lg:hidden bg-black/95 border-t border-[#c0392b]/20 px-6 py-6 flex flex-col gap-4">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className="font-cinzel text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-[#c0392b] transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="#chronicle"
+            className="font-cinzel text-xs tracking-[0.2em] uppercase border border-[#c0392b]/60 text-[#d4c5a0] px-5 py-2 text-center hover:bg-[#c0392b] hover:text-white transition-all duration-300 mt-2"
+          >
+            Begin the Journey
+          </a>
+        </div>
+      )}
+    </nav>
+  );
+}
+
+
+
+/* ─────────────────────────── Sidebar Social ─────────────────────────── */
+
+function SidebarSocial() {
+  const socials = [
+    {
+      label: "Twitter / X",
+      href: "#",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L2.012 2.25h6.945l4.261 5.638 5.026-5.638zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+      ),
+    },
+    {
+      label: "Instagram",
+      href: "#",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
+          <rect x="2" y="2" width="20" height="20" rx="5" />
+          <circle cx="12" cy="12" r="5" />
+          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+        </svg>
+      ),
+    },
+    {
+      label: "Discord",
+      href: "#",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+        </svg>
+      ),
+    },
+  ];
+
+  return (
+    <div className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-5">
+      <TreeSymbol className="w-4 h-5 text-[#c0392b] animate-pulse-slow" />
+      <div className="w-px h-8 bg-[#c0392b]/30" />
+      {socials.map((s) => (
+        <a
+          key={s.label}
+          href={s.href}
+          aria-label={s.label}
+          className="text-stone-600 hover:text-[#c0392b] transition-colors duration-300"
+        >
+          {s.icon}
+        </a>
+      ))}
+    </div>
+  );
+}
+
+/* ─────────────────────────── Hero Section ─────────────────────────── */
+
+function HeroSection() {
+  const [slide, setSlide] = useState(1);
+  const total = 5;
+
+  return (
+    <section className="relative h-screen min-h-\[600px\] flex flex-col items-center justify-center overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0">
+        <img
+          src="/img/hero-bg.png"
+          alt="Ashvathha world"
+          // fill
+          priority
+          className="object-cover object-center -z-10"
+        />
+        {/* Dark overlay + vignette */}
+        <div className="absolute inset-0 bg-linear-to-t from-black via-black/10 to-black/40 opacity-70" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/40 via-transparent to-black/40 opacity-70" />
+      </div>
+
+      {/* Top crimson rune symbol */}
+      <div className="absolute top-28 left-1/2 -translate-x-1/2 animate-drift z-10">
+        <TreeSymbol className="w-6 h-8 text-[#c0392b] opacity-70" />
+      </div>
+
+      {/* Main content */}
+      <div className="relative z-10 text-center px-6 flex flex-col items-center">
+        <h1
+          className="font-cinzel text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold hero-text-shadow tracking-\[0.1em\] text-[#d4c5a0] animate-fade-in"
+          style={{ animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards" }}
+        >
+          ASHVATHHA
+        </h1>
+
+        <div
+          className="mt-6 animate-fade-in-up"
+          style={{ animationDelay: "0.5s", opacity: 0, animationFillMode: "forwards" }}
+        >
+          <p className="font-cinzel text-sm sm:text-sm tracking-[0.3em] text-[#c0392b] uppercase leading-relaxed">
+            The world forgot its gods.
+            <br />
+            The sea remembers.
+          </p>
+        </div>
+
+        <div
+          className="mt-12 animate-fade-in-up"
+          style={{ animationDelay: "0.8s", opacity: 0, animationFillMode: "forwards" }}
+        >
+          <a
+            href="#chronicle"
+            className="group flex flex-col items-center gap-2 font-cinzel text-xs tracking-[0.3em] uppercase text-stone-400 hover:text-[#d4c5a0] transition-colors duration-300"
+          >
+            <span>Enter Ashvathha</span>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+              className="w-4 h-4 animate-bounce"
+            >
+              <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
+          </a>
         </div>
       </div>
-    </div>
-  )
+
+      {/* Slide counter */}
+      <div className="absolute bottom-8 right-8 z-10 flex flex-col items-end gap-1">
+        <span className="font-cinzel text-xs text-stone-500">
+          {String(slide).padStart(2, "0")}
+        </span>
+        <div className="w-6 h-px bg-[#c0392b]/40" />
+        <span className="font-cinzel text-xs text-stone-600">
+          {String(total).padStart(2, "0")}
+        </span>
+      </div>
+
+      {/* Slide dots (decorative) */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+        {Array.from({ length: total }).map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setSlide(i + 1)}
+            aria-label={`Slide ${i + 1}`}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${slide === i + 1
+              ? "bg-[#c0392b] scale-125"
+              : "bg-stone-600 hover:bg-stone-400"
+              }`}
+          />
+        ))}
+      </div>
+    </section>
+  );
 }
-export default page
+
+/* ─────────────────────────── Chronicle Section ─────────────────────────── */
+
+function ChronicleSection() {
+  return (
+    <section id="chronicle" className="relative bg-[#0d0d0d]">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 min-h-\[560px\]">
+        {/* Text side */}
+        <div className="flex flex-col justify-center px-8 md:px-16 py-20">
+          <p className="reveal font-cinzel text-xs tracking-[0.3em] text-[#c0392b] uppercase mb-4">
+            The Chronicle
+          </p>
+          <h2 className="reveal font-cinzel text-2xl sm:text-3xl md:text-4xl text-[#d4c5a0] leading-tight mb-6" style={{ transitionDelay: "0.1s" }}>
+            When hope becomes rebellion,
+            <br />
+            and rebellion becomes myth.
+          </h2>
+
+          <DiamondOrnament />
+
+          <div className="reveal space-y-4 text-stone-400 text-sm leading-relaxed" style={{ transitionDelay: "0.2s" }}>
+            <p>
+              In a world where gods are forgotten and demons rule the ashes of
+              civilization, three brothers born of blood, cage, and survival
+              dare to defy fate.
+            </p>
+            <p>
+              They uncover a scripture that whispers of a mountain untouched by
+              corruption—Gandamadana, a place tied to something ancient,
+              powerful, and possibly redemptive.
+            </p>
+            <p>
+              But this isn&apos;t just a quest.
+              <br />
+              It&apos;s Ashvathha—a crucible of trials, illusions, and arenas
+              where demons gamble lives for spectacle.
+            </p>
+          </div>
+
+          <div className="reveal mt-8" style={{ transitionDelay: "0.3s" }}>
+            <a
+              href="#archives"
+              className="inline-flex items-center gap-3 font-cinzel text-xs tracking-[0.2em] uppercase border border-[#c0392b]/50 text-[#d4c5a0] px-6 py-3 hover:bg-[#c0392b] hover:border-[#c0392b] transition-all duration-300 group"
+            >
+              Read the Full Chronicle
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        {/* Image side */}
+        <div className="reveal-right relative min-h-\[380px\] lg:min-h-0 overflow-hidden">
+          <img
+            src="/img/chronicles.png"
+            alt="The Chronicle — dark library hall"
+            fill
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-linear-to-r from-[#0d0d0d] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────── Footer ─────────────────────────── */
+
+function Footer() {
+  return (
+    <footer id="beyond" className="bg-black border-t border-stone-900 py-16 px-6">
+      <div className="max-w-7xl mx-auto flex flex-col items-center gap-8">
+        <TreeSymbol className="w-6 h-8 text-[#c0392b] opacity-60" />
+
+        <p className="font-cinzel text-2xl tracking-[0.25em] text-[#d4c5a0] uppercase">
+          Ashvathha
+        </p>
+
+        <div className="h-px w-24 bg-linear-to-r from-transparent via-[#c0392b]/40 to-transparent" />
+
+        <p className="font-cinzel text-xs tracking-[0.2em] text-stone-600 uppercase text-center">
+          The world forgot its gods. The sea remembers.
+        </p>
+
+        <div className="flex items-center gap-8">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="font-cinzel text-[10px] tracking-[0.2em] uppercase text-stone-600 hover:text-[#c0392b] transition-colors duration-300"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        <p className="font-cinzel text-[10px] tracking-[0.15em] text-stone-800 uppercase">
+          © 2024 Ashvathha. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
+}
+
+/* ─────────────────────────── Page ─────────────────────────── */
+
+export default function Page() {
+  useReveal();
+
+  return (
+    <main className="bg-black min-h-screen overflow-x-hidden">
+      <Navbar />
+      <SidebarSocial />
+      <HeroSection />
+      <ChronicleSection />
+      {/* <CharactersSection /> */}
+      {/* <WorldSection /> */}
+      {/* <ArchivesSection /> */}
+      <Footer />
+    </main>
+  );
+}
