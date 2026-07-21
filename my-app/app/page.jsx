@@ -5,6 +5,9 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
  import React from "react";
+import Link from "next/link";
+import Navbar from "@/component/Navbar";
+import Footer from "@/component/Footer";
 
 /* ─────────────────────────── Data ─────────────────────────── */
 
@@ -59,14 +62,6 @@ const CHAPTERS = [
   },
 ];
 
-
-const NAV_LINKS = [
-  { label: "The World", href: "#world" },
-  { label: "The Survivors", href: "#survivors" },
-  { label: "The Chronicle", href: "#chronicle" },
-  { label: "The Archives", href: "#archives" },
-  { label: "Beyond", href: "#beyond" },
-];
 
 /* ─────────────────────────── SVG Icons ─────────────────────────── */
 
@@ -145,99 +140,6 @@ function useReveal() {
   }, []);
 }
 
-/* ─────────────────────────── Navbar ─────────────────────────── */
-
-
-function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-black/90 backdrop-blur-sm border-b border-[#c0392b]/20"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-3">
-          <TreeSymbol className="w-5 h-6 text-[#c0392b]" />
-          <span className="font-cinzel text-sm tracking-[0.25em] text-[#d4c5a0] uppercase">
-            Ashvathha
-          </span>
-        </div>
-
-        {/* Desktop Nav */}
-        <ul className="hidden lg:flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                className="font-cinzel text-xs tracking-[0.2em] text-stone-400 hover:text-[#c0392b] transition-colors duration-300 uppercase"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* CTA */}
-        <div className="hidden lg:flex items-center gap-4">
-          <a
-            href="#chronicle"
-            className="font-cinzel text-xs tracking-[0.2em] uppercase border border-[#c0392b]/60 text-[#d4c5a0] px-5 py-2 hover:bg-[#c0392b] hover:text-white transition-all duration-300"
-          >
-            Begin the Journey
-          </a>
-        </div>
-
-        {/* Mobile hamburger */}
-        <button
-          className="lg:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          <span className={`block w-6 h-px bg-[#d4c5a0] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-6 h-px bg-[#d4c5a0] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-px bg-[#d4c5a0] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="lg:hidden bg-black/95 border-t border-[#c0392b]/20 px-6 py-6 flex flex-col gap-4">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="font-cinzel text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-[#c0392b] transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            href="#chronicle"
-            className="font-cinzel text-xs tracking-[0.2em] uppercase border border-[#c0392b]/60 text-[#d4c5a0] px-5 py-2 text-center hover:bg-[#c0392b] hover:text-white transition-all duration-300 mt-2"
-          >
-            Begin the Journey
-          </a>
-        </div>
-      )}
-    </nav>
-  );
-}
-
-
-
 /* ─────────────────────────── Sidebar Social ─────────────────────────── */
 
 function SidebarSocial() {
@@ -301,12 +203,12 @@ function HeroSection() {
     <section className="relative h-screen min-h-\[600px\] flex flex-col items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <img
+        <Image
           src="/img/hero-bg.png"
           alt="Ashvathha world"
-          // fill
+          fill
           priority
-          className="object-cover object-center -z-10"
+          className="object-cover object-center"
         />
         {/* Dark overlay + vignette */}
         <div className="absolute inset-0 bg-linear-to-t from-black via-black/10 to-black/40 opacity-70" />
@@ -448,7 +350,7 @@ function ChronicleSection() {
 
         {/* Image side */}
         <div className="reveal-right relative min-h-\[380px\] lg:min-h-0 overflow-hidden">
-          <img
+          <Image
             src="/img/chronicles.png"
             alt="The Chronicle — dark library hall"
             fill
@@ -462,43 +364,6 @@ function ChronicleSection() {
   );
 }
 
-/* ─────────────────────────── Footer ─────────────────────────── */
-
-function Footer() {
-  return (
-    <footer id="beyond" className="bg-black border-t border-stone-900 py-16 px-6">
-      <div className="max-w-7xl mx-auto flex flex-col items-center gap-8">
-        <TreeSymbol className="w-6 h-8 text-[#c0392b] opacity-60" />
-
-        <p className="font-cinzel text-2xl tracking-[0.25em] text-[#d4c5a0] uppercase">
-          Ashvathha
-        </p>
-
-        <div className="h-px w-24 bg-linear-to-r from-transparent via-[#c0392b]/40 to-transparent" />
-
-        <p className="font-cinzel text-xs tracking-[0.2em] text-stone-600 uppercase text-center">
-          The world forgot its gods. The sea remembers.
-        </p>
-
-        <div className="flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="font-cinzel text-[10px] tracking-[0.2em] uppercase text-stone-600 hover:text-[#c0392b] transition-colors duration-300"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        <p className="font-cinzel text-[10px] tracking-[0.15em] text-stone-800 uppercase">
-          © 2024 Ashvathha. All rights reserved.
-        </p>
-      </div>
-    </footer>
-  );
-}
 
 /* ─────────────────────────── Page ─────────────────────────── */
 
@@ -511,9 +376,6 @@ export default function Page() {
       <SidebarSocial />
       <HeroSection />
       <ChronicleSection />
-      {/* <CharactersSection /> */}
-      {/* <WorldSection /> */}
-      {/* <ArchivesSection /> */}
       <Footer />
     </main>
   );
