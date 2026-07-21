@@ -25,7 +25,7 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500  ${
         scrolled
           ? "bg-black/90 backdrop-blur-sm border-b border-[#c0392b]/20"
           : "bg-transparent"
@@ -35,9 +35,9 @@ function Navbar() {
         {/* Logo */}
         <div className="flex items-center gap-3">
           <TreeSymbol className="w-5 h-6 text-[#c0392b]" />
-          <span className="font-cinzel text-sm tracking-[0.25em] text-[#d4c5a0] uppercase">
+          <Link href='/' className="font-cinzel text-sm tracking-[0.25em] text-[#d4c5a0] uppercase">
             Ashvathha
-          </span>
+          </Link>
         </div>
 
         {/* Desktop Nav */}
@@ -46,7 +46,7 @@ function Navbar() {
             <li key={link.label}>
               <Link
                 href={link.href}
-                className="font-cinzel text-xs tracking-[0.2em] text-stone-400 hover:text-[#c0392b] transition-colors duration-300 uppercase"
+                className="font-cinzel nav-link nav-link::after nav-link:hover::after text-xs tracking-[0.2em] text-stone-400 hover:text-[#c0392b] transition-colors duration-300 uppercase"
               >
                 {link.label}
               </Link>

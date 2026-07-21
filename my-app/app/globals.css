@@ -3,9 +3,12 @@
 @layer base {
   :root {
     --crimson: #c0392b;
-    --crimson-light: #e74c3c;
     --gold: #b8960c;
     --parchment: #d4c5a0;
+    --parchment-dark: #c8b99a;
+    --crimson-light: #a52020;
+    --dark-bg: #0d0d0d;
+    --card-bg: #d4c4a0;
   }
 
   html {
@@ -15,7 +18,7 @@
   body {
     background-color: #0a0a0a;
     color: #d4c5a0;
-    font-family: "Georgia", "Times New Roman", serif;
+    font-family: "Georgia","IM Fell English", "Times New Roman", serif;
   }
 
   ::selection {
@@ -41,6 +44,15 @@
     font-family: "Cinzel", "Palatino Linotype", "Book Antiqua", serif;
     letter-spacing: 0.08em;
   }
+
+.font-cinzel-deco {
+  font-family: "Cinzel Decorative", serif;
+}
+
+.font-fell {
+  font-family: "IM Fell English", serif;
+}
+
 
   .font-cormorant {
     font-family: "Cormorant Garamond", "Georgia", serif;
@@ -95,11 +107,27 @@
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  45%       { opacity: 0.92; }
+  50%       { opacity: 0.88; }
+  55%       { opacity: 0.95; }
+}
 @keyframes subtlePulse {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.6; }
@@ -115,16 +143,36 @@
   100% { background-position:  200% center; }
 }
 
+@keyframes runeGlow {
+  0%, 100% { filter: drop-shadow(0 0 3px #8b1a1a88); }
+  50%       { filter: drop-shadow(0 0 8px #8b1a1acc); }
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease forwards;
 }
 
-.animate-fade-in {
-  animation: fadeIn 1s ease forwards;
+.animate-fade-in-down {
+  animation: fadeInDown 0.7s ease both;
 }
 
+.animate-fade-in {
+  animation: fadeIn 4s ease forwards;
+}
+
+.animate-flicker {
+  animation: flicker 1s ease-in-out infinite;
+}
+
+.animate-rune-glow {
+  animation: runeGlow 3s ease-in-out infinite;
+}
 .animate-pulse-slow {
   animation: subtlePulse 3s ease-in-out infinite;
+}
+
+.animate-divider {
+  animation: dividerExpand 1s ease both;
 }
 
 .animate-drift {
@@ -169,3 +217,80 @@
   opacity: 1;
   transform: translateX(0);
 }
+
+
+
+/* ── Parchment card ─────────────────────────────────── */
+.parchment-card {
+  background-color: #cdbfa0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.15'/%3E%3C/svg%3E");
+  position: relative;
+}
+
+.parchment-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at top left,    rgba(180,155,110,0.4) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom right, rgba(100,80,50,0.3) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+
+
+/* ── Stats border ───────────────────────────────────── */
+.stats-container {
+  border: 1px solid rgba(139, 26, 26, 0.35);
+  background: rgba(10, 8, 8, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+/* ── Nav link hover ─────────────────────────────────── */
+.nav-link {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--crimson);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ── Volume card hover ──────────────────────────────── */
+.volume-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.volume-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7);
+}
+
+/* ── Read button ────────────────────────────────────── */
+.read-btn {
+  background: #0d0d0d;
+  color: var(--parchment);
+  transition: background 0.25s ease, color 0.25s ease, letter-spacing 0.25s ease;
+}
+
+.read-btn:hover {
+  background: var(--crimson);
+  letter-spacing: 0.12em;
+}
+
+/* ── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0d0d0d; }
+::-webkit-scrollbar-thumb { background: #8b1a1a66; border-radius: 3px; }
