@@ -241,6 +241,7 @@ function StatsBar() {
 
 export default function ChroniclePage() {
   return (
+    <>
     <main className="relative min-h-screen bg-[#0d0d0d] overflow-hidden ">
       {/* ── Hero background image ── */}
       <div className="absolute inset-0 z-0">
@@ -304,7 +305,8 @@ export default function ChroniclePage() {
       <section className="relative z-10 px-4 pb-12">
         <StatsBar />
       </section>
-      <Footer />
     </main>
+      <Footer />
+      </>
   );
 }

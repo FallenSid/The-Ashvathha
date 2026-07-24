@@ -12,7 +12,7 @@ const NAV_LINKS = [
 
 function Footer() {
   return (
-    <footer id="beyond" className="bg-black border-t border-stone-900 py-16 px-6 opacity-100">
+    <footer id="beyond" className="bg-black border-t border-stone-900 py-16 px-6 z-10">
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-8">
         <TreeSymbol className="w-6 h-8 text-[#c0392b] opacity-100" />
 
@@ -38,7 +38,7 @@ function Footer() {
           ))}
         </div>
 
-        <p className="font-cinzel text-[10px] tracking-[0.15em] text-stone-800 uppercase">
+        <p className="font-cinzel text-[10px] tracking-[0.15em] text-[#b8ab8a] uppercase">
           © 2024 Ashvathha. All rights reserved.
         </p>
       </div>
