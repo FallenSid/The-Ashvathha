@@ -8,8 +8,8 @@ import Link from "next/link";
 const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Chronicle", href: "/chronicle" },
-  { label: "Characters", href: "/character" },
-  { label: "World", href: "/world" },
+  { label: "Characters", href: "/characters" },
+  { label: "lores", href: "/lores" },
   { label: "About", href: "/about" },
 ];
 
