@@ -9,60 +9,6 @@ import Link from "next/link";
 import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
 
-/* ─────────────────────────── Data ─────────────────────────── */
-
-const CHARACTERS = [
-  { name: "Rachit", title: "The Strategist", img: "/images/char-rachit.jpg" },
-  { name: "Gaurav", title: "The Brawler", img: "/images/char-gaurav.jpg" },
-  { name: "Swayam", title: "The Silent Anchor", img: "/images/char-swayam.jpg" },
-  { name: "Aviral", title: "The Observer", img: "/images/char-aviral.jpg" },
-  { name: "Anshika", title: "The Wildfire", img: "/images/char-anshika.jpg" },
-];
-
-const CHAPTERS = [
-  {
-    num: "I",
-    label: "The Chronicle",
-    title: "The Beginning",
-    desc: "The journey begins with three shadows.",
-    img: "/images/chapter1.jpg",
-    locked: false,
-  },
-  {
-    num: "II",
-    label: "The Chronicle",
-    title: "Ashvathha",
-    desc: "Where survival is merely admission.",
-    img: null,
-    locked: true,
-  },
-  {
-    num: "III",
-    label: "The Chronicle",
-    title: "The Arenas",
-    desc: "Blood for spectacle. Glory for demons.",
-    img: null,
-    locked: true,
-  },
-  {
-    num: "IV",
-    label: "The Chronicle",
-    title: "Gandamadana",
-    desc: "The mountain remembers.",
-    img: null,
-    locked: true,
-  },
-  {
-    num: "V",
-    label: "The Chronicle",
-    title: "The War",
-    desc: "Fate is not given. It is rewritten.",
-    img: null,
-    locked: true,
-  },
-];
-
-
 /* ─────────────────────────── SVG Icons ─────────────────────────── */
 
 export function TreeSymbol({ className = "" }) {
@@ -85,18 +31,6 @@ export function TreeSymbol({ className = "" }) {
   );
 }
 
-function CompassIcon({ className = "" }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} stroke="currentColor" strokeWidth="1.2">
-      <circle cx="12" cy="12" r="10" />
-      <circle cx="12" cy="12" r="2" />
-      <line x1="12" y1="2" x2="12" y2="6" />
-      <line x1="12" y1="18" x2="12" y2="22" />
-      <line x1="2" y1="12" x2="6" y2="12" />
-      <line x1="18" y1="12" x2="22" y2="12" />
-    </svg>
-  );
-}
 
 function DiamondOrnament() {
   return (
@@ -111,14 +45,6 @@ function DiamondOrnament() {
   );
 }
 
-function LockIcon({ className = "" }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} stroke="currentColor" strokeWidth="1.5">
-      <rect x="5" y="11" width="14" height="10" rx="2" />
-      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-    </svg>
-  );
-}
 
 /* ─────────────────────────── Hook: Reveal on Scroll ─────────────────────────── */
 

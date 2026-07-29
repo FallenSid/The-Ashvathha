@@ -129,7 +129,7 @@ function HeroSection() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-bg.jpg"
+          src="/img/lore-bg.png"
           alt="Lore Hero Background"
           fill
           className="object-cover object-center"
@@ -260,29 +260,25 @@ const realmCards = [
     title: "LOCATIONS",
     description:
       "From towering kingdoms to forgotten ruins, explore the lands that bear the scars of time.",
-    image: "/images/card-locations.jpg",
-    icon: <LocationPin />,
+    image: "/img/lore/locations.png",
   },
   {
     title: "WEAPONRY",
     description:
       "Blades of legend, forged in fire and fate. Discover the weapons that choose their wielders.",
-    image: "/images/card-weaponry.jpg",
-    icon: <SwordIcon />,
+    image: "/img/lore/weaponry.png",
   },
   {
     title: "CREATURES",
     description:
       "Beings of flesh and shadow. Learn of the species that roam, rule, or hunt within Ashvathha.",
-    image: "/images/card-creatures.jpg",
-    icon: <SkullIcon />,
+    image: "/img/lore/creatures.png",
   },
   {
     title: "ORGANIZATIONS",
     description:
       "Kingdoms, clans, orders and councils. The powers that govern, scheme and survive.",
-    image: "/images/card-organizations.jpg",
-    icon: <CrownIcon />,
+    image: "/img/lore/organizations.png",
   },
 ];
 
@@ -294,32 +290,7 @@ function RealmCard({ card }) {
         border: "1px solid #2a2218",
       }}
     >
-      {/* Icon diamond at top */}
-      <div className="absolute top-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
-        <div className="relative flex items-center justify-center w-12 h-12">
-          {/* Diamond background */}
-          <svg
-  width="55"
-  height="55"
-  viewBox="0 0 48 48"
-  className="absolute"
-  fill="none"
->
-  <rect
-    x="13"
-    y="13"
-    width="22"
-    height="22"
-    transform="rotate(45 24 24)"
-    fill="#1a1208"
-    stroke="#c9a84c"
-    strokeWidth="1"
-  />
-</svg>
-          <div className="relative z-10">{card.icon}</div>
-        </div>
-      </div>
-
+     
       {/* Card image */}
       <div className="relative w-full h-64 overflow-hidden">
         <Image

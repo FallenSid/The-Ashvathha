@@ -63,7 +63,8 @@ const VOLUMES = [
 function VolumeCard({ volume, delay }) {
   return (
     <article
-      className={`volume-card flex overflow-hidden rounded-sm shadow-2xl w-full max-w-\[580px\] animate-fade-in-up ${delay}`}
+      // className={`volume-card flex overflow-hidden rounded-sm shadow-2xl w-full max-w-\[580px\] animate-fade-in-up ${delay}`}
+      className={`volume-card flex overflow-hidden rounded-sm shadow-2xl w-full max-w-\[580px\] animate-fade-in ${delay}`}
       style={{ minHeight: 380 }}
     >
       {/* Left – atmospheric image */}
@@ -134,7 +135,7 @@ function VolumeCard({ volume, delay }) {
 
         {/* Button */}
         <button className="read-btn w-full py-3 font-cinzel text-[11px] tracking-[0.18em] uppercase flex items-center justify-center gap-3 rounded-sm">
-          Read Volume {volume.roman}
+          Download Volume {volume.roman}
           <span className="text-base">→</span>
         </button>
       </div>

@@ -14,7 +14,7 @@ const CHARACTERS= [
     description:
       "He does not seek light, yet he is the reason others do not fall into the dark.",
     category: "HUMANS",
-    image: "/images/char-swayam.jpg",
+    image: "/img/character/swayam.png",
   },
   {
     id: "rachit",
@@ -23,7 +23,7 @@ const CHARACTERS= [
     description:
       "He sees what others miss. In silence, he reads the world like an open book.",
     category: "WANDERERS",
-    image: "/images/char-rachit.jpg",
+    image: "/img/character/rachit.png",
   },
   {
     id: "gaurav",
@@ -32,7 +32,25 @@ const CHARACTERS= [
     description:
       "Unpredictable. Unfiltered. A storm wrapped in humor and chaos.",
     category: "HUMANS",
-    image: "/images/char-gaurav.jpg",
+    image: "/img/character/gaurav.png",
+  },
+  {
+    id: "aviral",
+    name: "AVIRAL",
+    title: "THE NEGOTIATOR",
+    description:
+      "The human who negotiates with Flames itself.",
+    category: "HUMANS",
+    image: "/img/character/aviral.png",
+  },
+  {
+    id: "anshika",
+    name: "ANSHIKA",
+    title: "THE SHARP ILLUSION",
+    description:
+      "Unpredictable. Efficiemt. A clamn killer who believes in efficiency.",
+    category: "HUMANS",
+    image: "/img/character/anshika.png",
   },
   
 ];
@@ -60,13 +78,13 @@ function RuneIcon({ size = 22 }) {
 }
 
 // ─── Arrow icon ──────────────────────────────────────────────────────────────
-function ArrowRight() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
+// function ArrowRight() {
+//   return (
+//     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+//       <path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+//     </svg>
+//   );
+// }
 
 // ─── Character Card ───────────────────────────────────────────────────────────
 function CharacterCard({ char, delay }) {
@@ -84,7 +102,7 @@ function CharacterCard({ char, delay }) {
           src={char.image}
           alt={char.name}
           fill
-          style={{ objectFit: "cover", objectPosition: "center top" }}
+          style={{ objectFit: "cover", objectPosition: " center -80px " }}
           sizes="(max-width: 768px) 100vw, 33vw"
         />
         {/* Gradient overlay at bottom of image */}
@@ -155,20 +173,6 @@ function CharacterCard({ char, delay }) {
           {char.description}
         </p>
 
-        {/* Separator */}
-        <div
-          style={{
-            width: "100%",
-            height: "1px",
-            background: "rgba(180,50,30,0.15)",
-            margin: "8px 0",
-          }}
-        />
-
-        {/* View Profile */}
-        <a href={`#${char.id}`} className="view-profile-link">
-          VIEW PROFILE <ArrowRight />
-        </a>
       </div>
     </article>
   );
