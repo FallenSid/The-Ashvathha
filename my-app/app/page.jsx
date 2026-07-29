@@ -5,7 +5,6 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
  import React from "react";
-import Link from "next/link";
 import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
 

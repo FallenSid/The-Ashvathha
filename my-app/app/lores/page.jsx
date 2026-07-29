@@ -45,62 +45,6 @@ function SmallDiamond({ color = "#c9a84c" }) {
     </svg>
   );
 }
-
-function LocationPin() {
-  return (
-    <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
-      <path
-        d="M10 0C4.477 0 0 4.477 0 10c0 7 10 14 10 14s10-7 10-14c0-5.523-4.477-10-10-10z"
-        fill="#c9a84c"
-        fillOpacity="0.85"
-      />
-      <circle cx="10" cy="10" r="3.5" fill="#0a0a0a" />
-    </svg>
-  );
-}
-
-function SwordIcon() {
-  return (
-    <svg width="16" height="28" viewBox="0 0 16 28" fill="none">
-      <rect x="7" y="0" width="2" height="20" rx="1" fill="#c9a84c" />
-      <rect x="3" y="18" width="10" height="2" rx="1" fill="#c9a84c" />
-      <rect x="7" y="20" width="2" height="6" rx="1" fill="#c9a84c" opacity="0.7" />
-    </svg>
-  );
-}
-
-function SkullIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M12 2C7.03 2 3 6.03 3 11c0 2.9 1.3 5.5 3.35 7.27L6 20h12l-.35-1.73C19.7 16.5 21 13.9 21 11c0-4.97-4.03-9-9-9z"
-        fill="#c9a84c"
-        fillOpacity="0.85"
-      />
-      <rect x="8" y="20" width="2.5" height="2" rx="0.5" fill="#0a0a0a" />
-      <rect x="13.5" y="20" width="2.5" height="2" rx="0.5" fill="#0a0a0a" />
-      <ellipse cx="9" cy="11" rx="2" ry="2.2" fill="#0a0a0a" />
-      <ellipse cx="15" cy="11" rx="2" ry="2.2" fill="#0a0a0a" />
-      <rect x="11" y="13" width="2" height="3" rx="0.5" fill="#0a0a0a" />
-    </svg>
-  );
-}
-
-function CrownIcon() {
-  return (
-    <svg width="26" height="20" viewBox="0 0 26 20" fill="none">
-      <path
-        d="M2 16 L4 6 L8 11 L13 2 L18 11 L22 6 L24 16 Z"
-        fill="#c9a84c"
-        fillOpacity="0.85"
-        stroke="#c9a84c"
-        strokeWidth="0.5"
-      />
-      <rect x="2" y="16" width="22" height="3" rx="0.5" fill="#c9a84c" fillOpacity="0.85" />
-    </svg>
-  );
-}
-
 function OrnamentDivider({ label }) {
   return (
     <div className="flex items-center gap-4 w-full">

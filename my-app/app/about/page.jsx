@@ -106,9 +106,7 @@ function Hero() {
           priority
           className="object-cover object-center opacity-35"
         />
-        {/* Gradient overlay */}
-        {/* <div className="absolute inset-0 bg-linear-to-b from-[#0a0806]/60 via-transparent to-[#0a0806]" /> */}
-        {/* <div className="absolute inset-0 bg-linear-to-r from-[#0a0806]/70 via-transparent to-[#0a0806]/70" /> */}
+        
       </div>
 
       {/* Decorative side tree glyph */}
@@ -448,9 +446,6 @@ function BottomRow() {
   );
 }
 
-/* ─────────────────────────────────────────────────────────────────
-   QUOTE BAND
-─
 /* ─────────────────────────────────────────────────────────────────
    PAGE ROOT
 ───────────────────────────────────────────────────────────────── */
