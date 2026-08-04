@@ -6,7 +6,7 @@ import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
 
 // ─── Data ───────────────────────────────────────────────────────────────────
-const CHARACTERS= [
+const CHARACTERS = [
   {
     id: "swayam",
     name: "SWAYAM",
@@ -52,7 +52,7 @@ const CHARACTERS= [
     category: "HUMANS",
     image: "/img/character/anshika.png",
   },
-  
+
 ];
 
 const CATEGORIES = ["ALL", "HUMANS", "WANDERERS", "MYSTICS", "UNKNOWN"];
@@ -68,10 +68,10 @@ function RuneIcon({ size = 22 }) {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <line x1="12" y1="0"  x2="12" y2="28" stroke="#c0392b" strokeWidth="1.5" />
-      <line x1="7"  y1="8"  x2="12" y2="14" stroke="#c0392b" strokeWidth="1.5" />
-      <line x1="17" y1="8"  x2="12" y2="14" stroke="#c0392b" strokeWidth="1.5" />
-      <line x1="7"  y1="16" x2="12" y2="22" stroke="#c0392b" strokeWidth="1.5" />
+      <line x1="12" y1="0" x2="12" y2="28" stroke="#c0392b" strokeWidth="1.5" />
+      <line x1="7" y1="8" x2="12" y2="14" stroke="#c0392b" strokeWidth="1.5" />
+      <line x1="17" y1="8" x2="12" y2="14" stroke="#c0392b" strokeWidth="1.5" />
+      <line x1="7" y1="16" x2="12" y2="22" stroke="#c0392b" strokeWidth="1.5" />
       <line x1="17" y1="16" x2="12" y2="22" stroke="#c0392b" strokeWidth="1.5" />
     </svg>
   );
@@ -182,7 +182,7 @@ export default function CharactersPage() {
     <div style={{ background: "var(--color-bg)", minHeight: "100vh" }}>
 
       {/* ── NAVBAR ───────────────────────────────────────────────── */}
-      <Navbar/>
+      <Navbar />
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <header style={{ position: "relative", overflow: "hidden" }}>
@@ -273,13 +273,8 @@ export default function CharactersPage() {
 
         {/* Filter Tabs */}
         <div
-          className="animate-fade-up delay-400"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "6px",
-            marginBottom: "52px",
-          }}
+          className="animate-fade-up delay-400 flex flex-wrap justify-center gap-2 mb-3"
+          
         >
           {CATEGORIES.map((cat) => (
             <button
@@ -302,11 +297,11 @@ export default function CharactersPage() {
 
         {/* Character Grid */}
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "24px",
-          }}
+          className="grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-3
+            gap-6"
         >
           {filtered.map((char, i) => (
             <CharacterCard key={char.id} char={char} delay={i * 80} />
@@ -357,7 +352,7 @@ export default function CharactersPage() {
         </p>
         <RuneIcon size={14} />
       </footer>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

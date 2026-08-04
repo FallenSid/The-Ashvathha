@@ -49,6 +49,7 @@ const VOLUMES = [
     pages: 319,
     chapters: 11,
     image: "/img/volume-1.png",
+    download: "/volumes/Ashvathha_vol_1.pdf"
   },
   {
     roman: "II",
@@ -57,6 +58,8 @@ const VOLUMES = [
     pages: 358,
     chapters: 7,
     image: "/img/volume-2.png",
+    download: "/volumes/Ashvathha_vol_2.pdf"
+
   },
 ];
 
@@ -64,11 +67,29 @@ function VolumeCard({ volume, delay }) {
   return (
     <article
       // className={`volume-card flex overflow-hidden rounded-sm shadow-2xl w-full max-w-\[580px\] animate-fade-in-up ${delay}`}
-      className={`volume-card flex overflow-hidden rounded-sm shadow-2xl w-full max-w-\[580px\] animate-fade-in ${delay}`}
-      style={{ minHeight: 380 }}
+      className="
+flex
+flex-col
+sm:flex-row
+overflow-hidden
+rounded-sm
+shadow-2xl
+w-full
+max-w-\[580px\]
+min-h-\[380px\] sm:min-h\[380px\] lg:min-h-\[420px\]
+"
     >
       {/* Left – atmospheric image */}
-      <div className="relative w-[42%] shrink-0 overflow-hidden">
+      {/* <div className="relative w-[42%] shrink-0 overflow-hidden"> */}
+      <div className="
+relative
+w-full
+h-64
+sm:w-[42%]
+sm:h-auto
+shrink-0
+overflow-hidden
+">
         <Image
           src={volume.image}
           alt={`Volume ${volume.roman} illustration`}
@@ -134,10 +155,10 @@ function VolumeCard({ volume, delay }) {
         </div>
 
         {/* Button */}
-        <button className="read-btn w-full py-3 font-cinzel text-[11px] tracking-[0.18em] uppercase flex items-center justify-center gap-3 rounded-sm">
+        <a target="_blank" href={volume.download} className="read-btn w-full py-3 font-cinzel text-[11px] tracking-[0.18em] uppercase flex items-center justify-center gap-3 rounded-sm">
           Download Volume {volume.roman}
           <span className="text-base">→</span>
-        </button>
+        </a>
       </div>
     </article>
   );
