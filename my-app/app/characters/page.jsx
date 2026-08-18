@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
-
 // ─── Data ───────────────────────────────────────────────────────────────────
 const CHARACTERS = [
   {
@@ -12,16 +11,16 @@ const CHARACTERS = [
     name: "SWAYAM",
     title: "THE SILENT ANCHOR",
     description:
-      "He does not seek light, yet he is the reason others do not fall into the dark.",
+      "Calm, Watchful, and Calculating: the one who reads a room before anyone else moves.",
     category: "HUMANS",
     image: "/img/character/swayam.png",
   },
   {
     id: "rachit",
     name: "RACHIT",
-    title: "THE OBSERVER",
+    title: "THE STRATEGIST",
     description:
-      "He sees what others miss. In silence, he reads the world like an open book.",
+      "Unreadable and Composed: Speaks little and reveals less",
     category: "WANDERERS",
     image: "/img/character/rachit.png",
   },
@@ -30,28 +29,92 @@ const CHARACTERS = [
     name: "GAURAV",
     title: "THE VERSATILE KNUCKLEHEAD",
     description:
-      "Unpredictable. Unfiltered. A storm wrapped in humor and chaos.",
+      "Hot-tempered built through fistfights: The emotional core of the trio.",
     category: "HUMANS",
     image: "/img/character/gaurav.png",
   },
   {
     id: "aviral",
     name: "AVIRAL",
-    title: "THE NEGOTIATOR",
+    title: "PYROKINETIC FIGHTER",
     description:
-      "The human who negotiates with Flames itself.",
+      "Calm, meditative and disciplined with a quite intensity.",
     category: "HUMANS",
     image: "/img/character/aviral.png",
   },
   {
     id: "anshika",
     name: "ANSHIKA",
-    title: "THE SHARP ILLUSION",
+    title: "LAST SURVIVOR OF CHHAYAKUL",
     description:
-      "Unpredictable. Efficiemt. A clamn killer who believes in efficiency.",
+      "Composed, controlled, and sharp-eyed: an illusionist and healer.",
     category: "HUMANS",
     image: "/img/character/anshika.png",
   },
+  {
+    id: "yugetsu",
+    name: "YUGETSU YORU",
+    title: "UNKNOWN",
+    description:
+      "An hybrid demon: twitchy, self-doubting but don't fear to bite your hand.",
+    category: "HYBRID",
+    image: "/img/character/yugetsu.png",
+  },
+  {
+    id: "nyss",
+    name: "NYSS",
+    title: "UNKNOWN",
+    description:
+      "A disciplined, blue skinned demon paired with gaurav's team during devouring path.",
+    category: "DEMON",
+    image: "/img/character/nyss1.png",
+  },
+  {
+    id: "lilith",
+    name: "LILITH",
+    title: "UNKNOWNS",
+    description:
+      "UNKNOWN",
+    category: "DEMON",
+    image: "/img/character/lilith.png",
+  },
+  {
+    id: "reinhard",
+    name: "REINHARD",
+    title: "THE SWORD SAINT",
+    description:
+      "Six fit, crimson hair, sky blue eyes with faint red edge slit puples : dignified and restrained nobel demon.",
+    category: "DEMON",
+    image: "/img/character/reinhard.jpg",
+  },
+  {
+    id: "abhishraap",
+    name: "ABHISHRAAP",
+    title: "UNKNOWN",
+    description:
+      "UNKNOWN",
+    category: "DEMON",
+    image: "/img/character/abhishraap.png",
+  },
+  {
+    id: "kaal",
+    name: "KAAL",
+    title: "UNKNOWN",
+    description:
+      "UNKNOWN",
+    category: "UNKNOWN",
+    image: "/img/character/kaal1.png",
+  },
+  {
+    id: "scar",
+    name: "SCAR",
+    title: "SEAL USER",
+    description:
+      "Unpredictable.",
+    category: "DEMON",
+    image: "/img/character/scar1.png",
+  },
+  
 
 ];
 
@@ -116,6 +179,7 @@ function CharacterCard({ char, delay }) {
           alignItems: "center",
           textAlign: "center",
           gap: "10px",
+          backgroundColor:"#110d0d",
         }}
       >
         {/* Rune */}
